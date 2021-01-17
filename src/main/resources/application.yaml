@@ -1,0 +1,34 @@
+cron:
+  start: '"0 0 10 ? * 1-7 *"'
+  stop: '"0 0 11 ? * 1-7 *"'
+logging:
+  level:
+    org:
+      apache:
+        camel: debug
+      hibernate:
+        SQL: debug
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n'
+route:
+  autostart: true
+azure:
+  accessKey: Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
+    accountName: devstoreaccount1
+    containerName: testContainer
+    url: http://127.0.0.1:10000/%s/%s
+source:
+  location: src/main/resources/files
+spring:
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver
+    password: ad123
+    url: jdbc:oracle:thin:@//localhost:1521/ORALFRPDB.localdomain
+    username: procproject
+  jpa:
+    hibernate:
+      ddl-auto: none
+target:
+  error:
+    location: src/main/resources/error
+  location: src/main/resources/files/archive
