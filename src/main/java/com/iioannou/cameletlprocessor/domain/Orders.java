@@ -27,65 +27,38 @@ public class Orders {
     @Column(name = "WAREHOUSE_REFERENCE", columnDefinition = "NVARCHAR2 (32)")
     private String warehouseRef;
 
-    @DataField(pos = 4, columnName = "VACCINATION_CENTER_ID")
-    @Column(name = "VACCINATION_CENTER_ID", length = 10)
-    private Long vacCenterId;
-
-    @DataField(pos = 7, pattern = "dd/MM/yyyy HH:mm", columnName = "EXIT_DEEP_FREEZE_DATETIME" )
-    @Column(name = "EXIT_DEEP_FREEZE_DATETIME", columnDefinition = "DATE")
-    private Date exitedDeepFreezeTime;
-
-    @DataField(pos = 5, pattern = "dd/MM/yyyy HH:mm", columnName = "REQUESTED_DELIVERY_DATETIME")
+    @DataField(pos = 4, pattern = "dd/MM/yyyy HH:mm", columnName = "REQUESTED_DELIVERY_DATETIME")
     @Column(name = "REQUESTED_DELIVERY_DATETIME", columnDefinition = "DATE")
     private Date reqDeliveryDateTime;
 
-    @DataField(pos = 6,columnName = "VACCINE_ID")
-    @Column(name = "VACCINE_ID", length = 10)
-    private Long vacId;
-
-    @DataField(pos = 8, columnName = "QUANTITY_IN_BATCHES")
+    @DataField(pos = 5, columnName = "QUANTITY_IN_BATCHES")
     @Column(name = "QUANTITY_IN_BATCHES", length = 10)
     private Long quantity;
 
-    @DataField(pos = 9, columnName = "TYPE")
+    @DataField(pos = 6, columnName = "TYPE")
     @Column(name = "TYPE", length = 10)
     private Long type;
 
-    @DataField(pos = 10, columnName = "STATUS")
+    @DataField(pos = 7, columnName = "STATUS")
     @Column(name = "STATUS", length = 10)
     private Long status;
 
-    @DataField(pos = 11, pattern = "dd/MM/yyyy HH:mm", columnName = "CREATED_DATETIME")
+    @DataField(pos = 8, pattern = "dd/MM/yyyy HH:mm", columnName = "CREATED_DATETIME")
     @Column(name = "CREATED_DATETIME", columnDefinition = "DATE")
     private Date createdDateTime;
 
-    @DataField(pos = 12, pattern = "dd/MM/yyyy HH:mm", columnName = "LAST_UPDATED_DATETIME")
+    @DataField(pos = 9, pattern = "dd/MM/yyyy HH:mm", columnName = "LAST_UPDATED_DATETIME")
     @Column(name = "LAST_UPDATED_DATETIME", columnDefinition = "DATE")
     private Date updatedDateTime;
 
-    @DataField(pos = 13, columnName = "RECORD_CREATOR")
-    @Column(name = "RECORD_CREATOR", length = 10)
-    private Long creator;
+    @DataField(pos = 10, columnName = "ERROR_CODE")
+    @Column(name = "ERROR_CODE", length = 10)
+    private Long errorCode;
 
-    @DataField(pos = 14, columnName = "APPOINTMENTS_ERROR_CODE")
-    @Column(name = "APPOINTMENTS_ERROR_CODE", length = 10)
-    private Long appointErrorCode;
+    @DataField(pos = 11, columnName = "ERROR_MESSAGE")
+    @Column(name = "ERROR_MESSAGE", columnDefinition = "NVARCHAR2 (500)")
+    private String errorMsg;
 
-    @DataField(pos = 15, columnName = "APPOINTMENTS_ERROR_MESSAGE")
-    @Column(name = "APPOINTMENTS_ERROR_MESSAGE", columnDefinition = "NVARCHAR2 (500)")
-    private String appointErrorMsg;
-
-    @DataField(pos = 16, columnName = "WAREHOUSE_ERROR_CODE")
-    @Column(name = "WAREHOUSE_ERROR_CODE", length = 10)
-    private Long warehouseErrorCode;
-
-    @DataField(pos = 17, columnName = "WAREHOUSE_ERROR_MESSAGE")
-    @Column(name = "WAREHOUSE_ERROR_MESSAGE", columnDefinition = "NVARCHAR2 (500)")
-    private String warehouseErrorMsg;
-
-    @DataField(pos = 18, defaultValue = "", columnName = "COMMENTS")
-    @Column(name = "COMMENTS", columnDefinition = "NVARCHAR2 (500)")
-    private String comments;
 
     public Orders() {
         super();
@@ -115,24 +88,6 @@ public class Orders {
         this.warehouseRef = warehouseRef;
     }
 
-    public Long getVacCenterId() {
-        return vacCenterId;
-    }
-
-    public void setVacCenterId(Long vacCenterId) {
-        this.vacCenterId = vacCenterId;
-    }
-
-
-
-    public Long getVacId() {
-        return vacId;
-    }
-
-    public void setVacId(Long vacId) {
-        this.vacId = vacId;
-    }
-
     public Long getQuantity() {
         return quantity;
     }
@@ -155,14 +110,6 @@ public class Orders {
 
     public void setStatus(Long status) {
         this.status = status;
-    }
-
-    public Date getExitedDeepFreezeTime() {
-        return exitedDeepFreezeTime;
-    }
-
-    public void setExitedDeepFreezeTime(Date exitedDeepFreezeTime) {
-        this.exitedDeepFreezeTime = exitedDeepFreezeTime;
     }
 
     public Date getReqDeliveryDateTime() {
@@ -189,52 +136,20 @@ public class Orders {
         this.updatedDateTime = updatedDateTime;
     }
 
-    public Long getCreator() {
-        return creator;
+    public Long getErrorCode() {
+        return errorCode;
     }
 
-    public void setCreator(Long creator) {
-        this.creator = creator;
+    public void setErrorCode(Long errorCode) {
+        this.errorCode = errorCode;
     }
 
-    public Long getAppointErrorCode() {
-        return appointErrorCode;
+    public String getErrorMsg() {
+        return errorMsg;
     }
 
-    public void setAppointErrorCode(Long appointErrorCode) {
-        this.appointErrorCode = appointErrorCode;
-    }
-
-    public String getAppointErrorMsg() {
-        return appointErrorMsg;
-    }
-
-    public void setAppointErrorMsg(String appointErrorMsg) {
-        this.appointErrorMsg = appointErrorMsg;
-    }
-
-    public Long getWarehouseErrorCode() {
-        return warehouseErrorCode;
-    }
-
-    public void setWarehouseErrorCode(Long warehouseErrorCode) {
-        this.warehouseErrorCode = warehouseErrorCode;
-    }
-
-    public String getWarehouseErrorMsg() {
-        return warehouseErrorMsg;
-    }
-
-    public void setWarehouseErrorMsg(String warehouseErrorMsg) {
-        this.warehouseErrorMsg = warehouseErrorMsg;
-    }
-
-    public String getComments() {
-        return comments;
-    }
-
-    public void setComments(String comments) {
-        this.comments = comments;
+    public void setErrorMsg(String errorMsg) {
+        this.errorMsg = errorMsg;
     }
 
     @Override
@@ -242,16 +157,12 @@ public class Orders {
         return "Orders{" +
                 "warehouseId=" + warehouseId +
                 ", warehouseRef='" + warehouseRef + '\'' +
-                ", vacCenterId=" + vacCenterId +
-                ", exitedDeepFreezeTime=" + exitedDeepFreezeTime +
                 ", reqDeliveryDateTime=" + reqDeliveryDateTime +
-                ", vacId=" + vacId +
                 ", quantity=" + quantity +
                 ", type=" + type +
                 ", status=" + status +
                 ", createdDateTime=" + createdDateTime +
                 ", updatedDateTime=" + updatedDateTime +
-                ", creator=" + creator +
                 '}';
     }
 }
