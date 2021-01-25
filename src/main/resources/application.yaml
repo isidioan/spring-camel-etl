@@ -14,9 +14,9 @@ route:
   autostart: true
 azure:
   accessKey: Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
-    accountName: devstoreaccount1
-    containerName: testContainer
-    url: http://127.0.0.1:10000/%s/%s
+  accountName: devstoreaccount1
+  containerName: testContainer
+  url: http://127.0.0.1:10000/%s/%s
 source:
   location: src/main/resources/files
 spring:

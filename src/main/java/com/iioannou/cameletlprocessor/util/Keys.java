@@ -3,7 +3,7 @@ package com.iioannou.cameletlprocessor.util;
 public class Keys {
 
     public static final String ERROR_CODE = "ERROR_CODE";
-    public static final String APPOINTMENT_ERROR_MSG = "ERROR_MESSAGE";
+    public static final String ERROR_MSG = "ERROR_MESSAGE";
     public static final String MALFORMED_ERROR = "1";
     public static final String MISSING_ERROR = "2";
     public static final String FOREIGN_KEY_ERROR = "3";
