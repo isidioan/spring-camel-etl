@@ -1,5 +1,7 @@
 package com.iioannou.cameletlprocessor.domain;
 
+import com.iioannou.cameletlprocessor.util.DateConverter;
+import org.apache.camel.dataformat.bindy.annotation.BindyConverter;
 import org.apache.camel.dataformat.bindy.annotation.CsvRecord;
 import org.apache.camel.dataformat.bindy.annotation.DataField;
 
@@ -11,7 +13,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "ORDERS")
-@CsvRecord(separator = ";", skipFirstLine = true, generateHeaderColumns = true)
+@CsvRecord(separator = ",", skipFirstLine = true, generateHeaderColumns = true)
 public class Orders {
 
     @Id
@@ -27,8 +29,9 @@ public class Orders {
     @Column(name = "WAREHOUSE_REFERENCE", columnDefinition = "NVARCHAR2 (32)")
     private String warehouseRef;
 
-    @DataField(pos = 4, pattern = "dd/MM/yyyy HH:mm", columnName = "REQUESTED_DELIVERY_DATETIME")
+    @DataField(pos = 4, columnName = "REQUESTED_DELIVERY_DATETIME")
     @Column(name = "REQUESTED_DELIVERY_DATETIME", columnDefinition = "DATE")
+    @BindyConverter(DateConverter.CustomConverter.class)
     private Date reqDeliveryDateTime;
 
     @DataField(pos = 5, columnName = "QUANTITY_IN_BATCHES")
@@ -43,12 +46,14 @@ public class Orders {
     @Column(name = "STATUS", length = 10)
     private Long status;
 
-    @DataField(pos = 8, pattern = "dd/MM/yyyy HH:mm", columnName = "CREATED_DATETIME")
+    @DataField(pos = 8, columnName = "CREATED_DATETIME")
     @Column(name = "CREATED_DATETIME", columnDefinition = "DATE")
+    @BindyConverter(DateConverter.CustomConverter.class)
     private Date createdDateTime;
 
-    @DataField(pos = 9, pattern = "dd/MM/yyyy HH:mm", columnName = "LAST_UPDATED_DATETIME")
+    @DataField(pos = 9, columnName = "LAST_UPDATED_DATETIME")
     @Column(name = "LAST_UPDATED_DATETIME", columnDefinition = "DATE")
+    @BindyConverter(DateConverter.CustomConverter.class)
     private Date updatedDateTime;
 
     @DataField(pos = 10, columnName = "ERROR_CODE")

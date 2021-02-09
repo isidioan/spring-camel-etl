@@ -1,6 +1,6 @@
 cron:
-  start: '"0 0 10 ? * 1-7 *"'
-  stop: '"0 0 11 ? * 1-7 *"'
+  start: '0 0 10 ? * 1-7 *'
+  stop: '0 0 11 ? * 1-7 *'
 logging:
   level:
     org:
@@ -21,13 +21,14 @@ source:
   location: src/main/resources/files
 spring:
   datasource:
-    driver-class-name: oracle.jdbc.OracleDriver
-    password: ad123
-    url: jdbc:oracle:thin:@//localhost:1521/ORALFRPDB.localdomain
-    username: procproject
+    driver-class-name: org.h2.Driver
+    password: password
+    url: jdbc:h2:mem:testdb
+    username: sa
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.H2Dialect
 target:
   error:
     location: src/main/resources/error

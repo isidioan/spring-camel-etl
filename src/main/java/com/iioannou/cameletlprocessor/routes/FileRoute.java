@@ -104,10 +104,10 @@ public class FileRoute extends RouteBuilder {
                     exchange.getMessage().setBody((newBody));
                 })
                 .choice()
-                .when(header("CamelFileName").contains("ORDER"))
+                .when(header("CamelFileName").contains("orders"))
                 .log(LoggingLevel.INFO, "Order file")
                 .to("direct:orderRoute")
-                .when(header("CamelFileName").contains("TRANSACTIONS"))
+                .when(header("CamelFileName").contains("transactions"))
                 .log(LoggingLevel.INFO, "Transaction file")
                 .to("direct:transactionRoute")
                 .otherwise()
@@ -182,7 +182,7 @@ public class FileRoute extends RouteBuilder {
     private String buildPathUrl() {
         StringBuilder stringBuilder = new StringBuilder("file://");
         stringBuilder.append(sourceLocation)
-                .append("?delete=true?sorter=#fileSorter");
+                .append("?delete=true&sorter=#fileSorter");
 
         return stringBuilder.toString();
 

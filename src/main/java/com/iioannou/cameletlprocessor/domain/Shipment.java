@@ -13,7 +13,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "SHIPMENT")
-@CsvRecord(separator = ";", skipFirstLine = true, generateHeaderColumns = true)
+@CsvRecord(separator = ",", skipFirstLine = true, generateHeaderColumns = true)
 public class Shipment {
 
     @Id

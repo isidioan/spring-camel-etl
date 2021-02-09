@@ -1,5 +1,7 @@
 package com.iioannou.cameletlprocessor.domain;
 
+import com.iioannou.cameletlprocessor.util.DateConverter;
+import org.apache.camel.dataformat.bindy.annotation.BindyConverter;
 import org.apache.camel.dataformat.bindy.annotation.CsvRecord;
 import org.apache.camel.dataformat.bindy.annotation.DataField;
 
@@ -11,7 +13,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "TRANSACTIONS")
-@CsvRecord(separator = ";", skipFirstLine = true, generateHeaderColumns = true)
+@CsvRecord(separator = ",", skipFirstLine = true, generateHeaderColumns = true)
 public class Transactions {
 
     @Id
@@ -23,15 +25,17 @@ public class Transactions {
     @Column(name = "TRANSACTION_ID", length = 15)
     private Long transactionId;
 
-    @DataField(pos = 3, pattern = "dd/MM/yyyy HH:mm", columnName = "TRANSACTION_DATE")
+    @DataField(pos = 3,  columnName = "TRANSACTION_DATE")
     @Column(name = "TRANSACTION_DATE", columnDefinition = "DATE")
+    @BindyConverter(DateConverter.CustomConverter.class)
     private Date transDate;
 
-    @DataField(pos = 5, columnName = "QUANTITY")
+    @DataField(pos = 4, columnName = "QUANTITY")
     @Column(name = "QUANTITY", length = 10)
     private Long quantity;
 
-    @DataField(pos = 7, pattern = "dd/MM/yyyy HH:mm", columnName = "CREATED_DATETIME")
+    @DataField(pos = 5, columnName = "CREATED_DATETIME")
+    @BindyConverter(DateConverter.CustomConverter.class)
     @Column(name = "CREATED_DATETIME", columnDefinition = "DATE")
     private Date createdDateTime;
 
